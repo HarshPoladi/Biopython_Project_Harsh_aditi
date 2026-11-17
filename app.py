@@ -23,28 +23,43 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    .stApp { background: #f7f9fc; }
-    .block-container { padding-top: 2rem; padding-bottom: 3rem; max-width: 1200px; }
+    /* A quieter, more natural layout with clear contrast */
+    .stApp { background: #fbfbf8; color: #263238; }
+    .block-container { padding-top: 2.2rem; padding-bottom: 3rem; max-width: 1120px; }
+    html, body, [class*="css"] { color: #263238; }
+    p, li, label, .stMarkdown { color: #34434a; }
+    h1, h2, h3, h4 { color: #20343b !important; letter-spacing: -0.02em; }
     .hero {
-        padding: 2rem 2.2rem;
-        border-radius: 18px;
-        background: linear-gradient(120deg, #102a43 0%, #1f5673 60%, #2a7f82 100%);
-        color: white;
-        margin-bottom: 1.2rem;
+        padding: 1.5rem 1.7rem;
+        border-left: 5px solid #52796f;
+        border-radius: 5px;
+        background: #eef3ef;
+        color: #20343b;
+        margin-bottom: 1.6rem;
     }
-    .hero h1 { color: white; font-size: 2.25rem; margin-bottom: .35rem; }
-    .hero p { color: #e5f2f5; font-size: 1.02rem; margin-bottom: 0; }
+    .hero h1 { color: #20343b !important; font-size: 2rem; margin-bottom: .4rem; }
+    .hero p { color: #52636a !important; font-size: 1rem; margin-bottom: 0; }
     .section-note {
-        background: white; border: 1px solid #e4eaf1; border-radius: 12px;
+        background: #f1f4f1; border: 1px solid #dfe7e1; border-radius: 6px;
         padding: 1rem 1.2rem; margin: .5rem 0 1rem 0;
     }
     div[data-testid="stMetric"] {
-        background: white; border: 1px solid #e4eaf1;
-        padding: 1rem; border-radius: 12px;
+        background: #ffffff; border: 1px solid #e1e6e2;
+        padding: 1rem; border-radius: 6px;
+    }
+    div[data-testid="stMetric"] label,
+    div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+        color: #263b40 !important;
     }
     div.stButton > button[kind="primary"] {
-        border-radius: 10px; padding: .65rem 1.2rem; font-weight: 650;
+        background: #52796f; border: 1px solid #52796f;
+        border-radius: 6px; padding: .6rem 1rem; font-weight: 600;
     }
+    div.stButton > button[kind="primary"]:hover {
+        background: #3f6259; border-color: #3f6259;
+    }
+    [data-testid="stSidebar"] { background: #f1f4f1; }
+    [data-testid="stTabs"] button { color: #34434a !important; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -53,9 +68,8 @@ st.markdown(
 st.markdown(
     """
     <div class="hero">
-      <h1>🧬 Codon–tRNA Explorer</h1>
-      <p>Exploring the relationship between codon usage and tRNA abundance
-      in <i>Escherichia coli</i> K-12 MG1655.</p>
+      <h1>Codon usage and tRNA abundance</h1>
+      <p>A small bioinformatics study using coding sequences from <i>Escherichia coli</i> K-12 MG1655.</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -221,7 +235,7 @@ with st.sidebar:
 # ---------------------------------------------------------
 intro_left, intro_right = st.columns([1.35, 1])
 with intro_left:
-    st.subheader("About this project")
+    st.subheader("Project overview")
     st.write(
         "A codon is a group of three DNA or RNA bases that corresponds to an "
         "amino acid or a stop signal. During protein synthesis, tRNA molecules "
